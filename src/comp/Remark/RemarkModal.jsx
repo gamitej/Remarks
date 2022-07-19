@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "@emotion/styled";
 import { IoIosAddCircleOutline } from "react-icons/io";
 
@@ -10,7 +11,7 @@ import {
 	Tooltip,
 	Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+
 
 const StyledModal = styled(Modal)({
 	display: "flex",
@@ -18,11 +19,13 @@ const StyledModal = styled(Modal)({
 	justifyContent: "center",
 });
 
-const RemarksModal = () => {
-	const [open, setOpen] = useState(false);
+const RemarksModal = ({ open, handleModal,remarkModalTitle }) => {
 	return (
 		<>
-			<Tooltip onClick={(e) => setOpen(true)} title="Add New Remark">
+			<Tooltip
+				onClick={() => handleModal(true, "Add Remark")}
+				title="Add New Remark"
+			>
 				<button
 					className="text-3xl rounded-full hover:bg-gray-100 p-3"
 					style={{ color: "blue" }}
@@ -32,7 +35,7 @@ const RemarksModal = () => {
 			</Tooltip>
 			<StyledModal
 				open={open}
-				onClose={(e) => setOpen(false)}
+				onClose={() => handleModal(false, "Add Remark")}
 				aria-labelledby="modal-modal-title"
 				aria-describedby="modal-modal-description"
 			>
@@ -44,14 +47,14 @@ const RemarksModal = () => {
 					borderRadius={5}
 				>
 					<Typography variant="h6" color="gray" textAlign="center">
-						Add Remark
+						{remarkModalTitle}
 					</Typography>
 					<TextField
 						sx={{ width: "100%", marginTop: "2rem" }}
 						id="standard-multiline-static"
 						multiline
 						rows={2}
-						placeholder="What's on your mind ?"
+						placeholder="write remark ..."
 						variant="standard"
 					/>
 					<Stack direction="row" gap={1} mt={2} mb={3}>

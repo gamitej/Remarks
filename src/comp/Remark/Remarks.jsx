@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { remarksData } from "../DummyData/Data";
 import { RemarkModal } from "..";
 
@@ -13,11 +13,17 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-
-
-
-
 const Remark = () => {
+	const [open, setOpen] = useState(false);
+	const [remarkModalTitle, setRemarkModalTitle] = useState("");
+	const handleModal = (val, name) => {
+		setOpen(val);
+		setRemarkModalTitle(name);
+	};
+
+	const handleEdit = (name, val) => {
+		handleModal(val, name);
+	};
 	return (
 		<div className="border rounded-2xl lg-mr-6 bg-white shadow-md p-3 w-[30rem]">
 			{/* Remarks Header*/}
@@ -29,7 +35,7 @@ const Remark = () => {
 			<Divider />
 			{/* Remarks Items*/}
 			<div className="h-[14em] overflow-auto w-[100%]">
-				{remarksData.map((item,index) => (
+				{remarksData.map((item, index) => (
 					<div key={index}>
 						<ListItem alignItems="flex-start">
 							<ListItemText
@@ -46,7 +52,11 @@ const Remark = () => {
 								}
 							/>
 							<Tooltip placement="top" title="edit">
-								<IconButton>
+								<IconButton
+									onClick={() =>
+										handleEdit("Edit Remark", true)
+									}
+								>
 									<EditIcon color="primary" />
 								</IconButton>
 							</Tooltip>
@@ -60,7 +70,11 @@ const Remark = () => {
 					</div>
 				))}
 			</div>
-      <RemarkModal/>
+			<RemarkModal
+				open={open}
+				handleModal={handleModal}
+				remarkModalTitle={remarkModalTitle}
+			/>
 		</div>
 	);
 };
