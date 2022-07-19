@@ -1,13 +1,7 @@
 import styled from "@emotion/styled";
 import { IoIosAddCircleOutline } from "react-icons/io";
+
 import {
-	EmojiEmotions,
-	Image,
-	PersonAdd,
-	VideoCameraBack,
-} from "@mui/icons-material";
-import {
-	Avatar,
 	Box,
 	Button,
 	Modal,
@@ -22,15 +16,6 @@ const StyledModal = styled(Modal)({
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
-});
-
-const UserBox = styled(Box)({
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "center",
-	gap: "10px",
-	marginTop: "20px",
-	marginBottom: "20px",
 });
 
 const RemarksModal = () => {
@@ -62,7 +47,7 @@ const RemarksModal = () => {
 						Add Remark
 					</Typography>
 					<TextField
-						sx={{ width: "100%",marginTop:"2rem" }}
+						sx={{ width: "100%", marginTop: "2rem" }}
 						id="standard-multiline-static"
 						multiline
 						rows={2}
@@ -71,7 +56,7 @@ const RemarksModal = () => {
 					/>
 					<Stack direction="row" gap={1} mt={2} mb={3}>
 						<p>DropDown</p>
-            <p>DatePicker</p>
+						<p>DatePicker</p>
 					</Stack>
 					<Button fullWidth variant="contained">
 						Submit
