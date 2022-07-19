@@ -1,10 +1,11 @@
-import './App.css';
+import "./App.css";
+import { Remarks } from "./comp";
 
 function App() {
   return (
-    <div className="App">
-      Hello
-    </div>
+    <>
+      <Remarks />
+    </>
   );
 }
 
