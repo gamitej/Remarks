@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { IoIosAddCircleOutline } from "react-icons/io";
 
+// MUI
 import {
 	Box,
 	Button,
@@ -12,14 +13,14 @@ import {
 	Typography,
 } from "@mui/material";
 
-
+// MUI style comp
 const StyledModal = styled(Modal)({
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
 });
 
-const RemarksModal = ({ open, handleModal,remarkModalTitle }) => {
+const RemarksModal = ({ open, handleModal, remarkModalTitle }) => {
 	return (
 		<>
 			<Tooltip
@@ -46,9 +47,14 @@ const RemarksModal = ({ open, handleModal,remarkModalTitle }) => {
 					p={3}
 					borderRadius={5}
 				>
-					<Typography variant="h6" color="gray" textAlign="center">
+					<Typography
+						variant="h5"
+						color="text.primary"
+						textAlign="center"
+					>
 						{remarkModalTitle}
 					</Typography>
+					{/* Input-text Field */}
 					<TextField
 						sx={{ width: "100%", marginTop: "2rem" }}
 						id="standard-multiline-static"
