@@ -1,7 +1,8 @@
 import React from "react";
+import { remarksData } from "../DummyData/Data";
+import { RemarkModal } from "..";
 
 // MUI
-// eslint-disable-next-line
 import {
 	Divider,
 	ListItem,
@@ -11,7 +12,10 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { remarksData } from "../DummyData/Data";
+
+
+
+
 
 const Remark = () => {
 	return (
@@ -56,6 +60,7 @@ const Remark = () => {
 					</div>
 				))}
 			</div>
+      <RemarkModal/>
 		</div>
 	);
 };
