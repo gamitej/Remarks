@@ -14,8 +14,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
 const Remark = () => {
+
+  // ============ Handling State ===============
 	const [open, setOpen] = useState(false);
 	const [remarkModalTitle, setRemarkModalTitle] = useState("");
+
+  // ============ Event Handlers ===============
 	const handleModal = (val, name) => {
 		setOpen(val);
 		setRemarkModalTitle(name);
