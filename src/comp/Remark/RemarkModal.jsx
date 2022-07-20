@@ -23,6 +23,7 @@ const StyledModal = styled(Modal)({
 const RemarksModal = ({ open, handleModal, remarkModalTitle, dropDown }) => {
 	return (
 		<>
+			{/* Add Remark */}
 			<Tooltip
 				onClick={() => handleModal(true, "Add Remark")}
 				title="Add New Remark"
@@ -42,7 +43,7 @@ const RemarksModal = ({ open, handleModal, remarkModalTitle, dropDown }) => {
 			>
 				<Box
 					width={400}
-					height={300}
+					height={320}
 					bgcolor="whitesmoke"
 					p={3}
 					borderRadius={5}
@@ -63,6 +64,7 @@ const RemarksModal = ({ open, handleModal, remarkModalTitle, dropDown }) => {
 						placeholder="write remark ..."
 						variant="standard"
 					/>
+					{/* DropDowns */}
 					<Stack direction="row" gap={1} mt={2} mb={3}>
 						{dropDown}
 					</Stack>

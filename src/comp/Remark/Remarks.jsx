@@ -69,7 +69,7 @@ const Remark = () => {
 			</div>
 			<Divider />
 			{/* Remarks Items*/}
-			<div className="h-[14em] overflow-auto w-[100%]">
+			<div className="min-h-[2rem] max-h-[14em] overflow-auto w-[100%]">
 				{remarksData.map((item, index) => (
 					<div key={index}>
 						<ListItem alignItems="flex-start">
@@ -109,20 +109,17 @@ const Remark = () => {
 				open={open}
 				handleModal={handleModal}
 				remarkModalTitle={remarkModalTitle}
-				dropDown={dropDownData.map(
-					(item, index) =>
-						index < 1 && (
-							<DropDown
-								key={index}
-								label={item.label}
-								width={100}
-								id={item.id}
-								handleChange={handleChange}
-								value={formData[item.id]}
-								options={item.options}
-							/>
-						)
-				)}
+				dropDown={dropDownData.map((item, index) => (
+					<DropDown
+						key={index}
+						label={item.label}
+						width={100}
+						id={item.id}
+						handleChange={handleChange}
+						value={formData[item.id]}
+						options={item.options}
+					/>
+				))}
 			/>
 		</div>
 	);
