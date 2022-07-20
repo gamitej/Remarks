@@ -6,8 +6,12 @@ const Main = () => {
 	const [remarksData, setRemarksData] = useState([]);
 
 	useEffect(() => {
-		const res = getRemarks();
-		setRemarksData(res);
+		const call = async () => {
+			const res = await getRemarks();
+			console.log(res);
+			setRemarksData(res);
+		};
+		call();
 	}, []);
 	return (
 		<div className="flex flex-col justify-center items-center h-[90vh]">

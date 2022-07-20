@@ -8,7 +8,7 @@ axios.interceptors.response.use(null, (error) => {
 	if (!expectedError) {
 		console.log("Error Has Been Occured");
 	}
-	return Promise.reject(error);
+	return error;
 });
 
 const obj = {
