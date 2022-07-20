@@ -6,10 +6,10 @@ CORS(app)
 
 
 data = [
-    {"work": "coding", "remarkText": "hi amitej", "day": "monday"},
-    {"work": "coding", "remarkText": "hi singh", "day": "wednesday"},
-    {"work": "coding", "remarkText": "hi amisha", "day": "monday"},
-    {"work": "coding", "remarkText": "hi tiwari", "day": "friday"},
+    {"id": 1, "study": "coding", "remark": "hi amitej", "day": "monday"},
+    {"id": 2, "study": "coding", "remark": "hi singh", "day": "wednesday"},
+    {"id": 3, "study": "frontend", "remark": "hi amisha", "day": "monday"},
+    {"id": 4, "study": "coding", "remark": "hi tiwari", "day": "friday"},
 ]
 
 

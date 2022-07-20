@@ -20,7 +20,15 @@ const StyledModal = styled(Modal)({
 	justifyContent: "center",
 });
 
-const RemarksModal = ({ open, handleModal, remarkModalTitle, dropDown }) => {
+const RemarksModal = ({
+	open,
+	handleModal,
+	remarkModalTitle,
+	dropDown,
+	handleChangeRemark,
+	input,
+	handleSubmit,
+}) => {
 	return (
 		<>
 			{/* Add Remark */}
@@ -63,12 +71,18 @@ const RemarksModal = ({ open, handleModal, remarkModalTitle, dropDown }) => {
 						rows={2}
 						placeholder="write remark ..."
 						variant="standard"
+						value={input}
+						onChange={handleChangeRemark}
 					/>
 					{/* DropDowns */}
 					<Stack direction="row" gap={1} mt={2} mb={3}>
 						{dropDown}
 					</Stack>
-					<Button fullWidth variant="contained">
+					<Button
+						fullWidth
+						variant="contained"
+						onClick={handleSubmit}
+					>
 						Submit
 					</Button>
 				</Box>

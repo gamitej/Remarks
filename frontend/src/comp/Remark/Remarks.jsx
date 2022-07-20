@@ -17,6 +17,7 @@ const Remark = ({ remarksData }) => {
 	// ============ Handling State ===============
 	const [open, setOpen] = useState(false);
 	const [remarkModalTitle, setRemarkModalTitle] = useState("");
+	const [input, setInput] = useState("");
 	const [formData, setFormData] = useState({
 		study: "coding",
 		day: "monday",
@@ -26,45 +27,46 @@ const Remark = ({ remarksData }) => {
 	const handleModal = (val, name) => {
 		setOpen(val);
 		setRemarkModalTitle(name);
+		setInput("");
+		setFormData({
+			study: "coding",
+			day: "monday",
+		});
 	};
 
-	const handleEdit = (name, val) => {
+	const handleEdit = (name, val, text, remarkStudy, remarkDay) => {
+		const study = "study";
+		const day = "day";
 		handleModal(val, name);
+		setFormData({ ...formData, [study]: remarkStudy, [day]: remarkDay });
+		setInput(text);
 	};
 
 	const handleChange = ({ target }) => {
-		console.log(target.name, target.value);
+		//console.log(target.name, target.value);
 		setFormData({ ...formData, [target.name]: target.value });
+	};
+
+	const handleChangeRemark = (e) => {
+		//console.log(e.target.value);
+		setInput(e.target.value);
+	};
+
+	const handleSubmit = () => {
+		console.log({ ...formData, remark: input });
+		setInput("");
+		setFormData({
+			study: "coding",
+			day: "monday",
+		});
 	};
 
 	return (
 		<div className="border rounded-2xl lg-mr-6 bg-white shadow-md p-3 w-[30rem]">
 			{/* Remarks Header*/}
 			<div className="flex flex-row justify-between items-center h-[4rem]">
-				<div className="flex gap-x-2 lg:gap-x-3 justify-center items-center ">
+				<div className="flex justify-center items-center w-[100%]">
 					<p className="font-semibold text-xl my-1">Remarks</p>
-				</div>
-				{/* Drop-Down */}
-				<div className="flex flex-row gap-x-2 justify-center items-center">
-					{dropDownData?.map((item, index) => (
-						<Tooltip
-							title={formData[item.id]}
-							placement="top"
-							arrow
-						>
-							<div>
-								<DropDown
-									key={index}
-									label={item.label}
-									width={80}
-									id={item.id}
-									handleChange={handleChange}
-									value={formData[item.id]}
-									options={item.options}
-								/>
-							</div>
-						</Tooltip>
-					))}
 				</div>
 			</div>
 			<Divider />
@@ -72,17 +74,17 @@ const Remark = ({ remarksData }) => {
 			<div className="min-h-[2rem] max-h-[14em] overflow-auto w-[100%]">
 				{remarksData &&
 					remarksData.map((item, index) => (
-						<div key={index}>
+						<div key={item.id}>
 							<ListItem alignItems="flex-start">
 								<ListItemText
-									primary={item.date}
+									primary={item.day}
 									secondary={
 										<>
 											<span className="inline font-bold">
-												{item.field}
+												{item.study}
 											</span>
 											<span className="inline mx-1">
-												- {item.remarkText}
+												- {item.remark}
 											</span>
 										</>
 									}
@@ -90,7 +92,13 @@ const Remark = ({ remarksData }) => {
 								<Tooltip placement="top" title="edit">
 									<IconButton
 										onClick={() =>
-											handleEdit("Edit Remark", true)
+											handleEdit(
+												"Edit Remark",
+												true,
+												item.remark,
+												item.study,
+												item.day
+											)
 										}
 									>
 										<EditIcon color="primary" />
@@ -110,6 +118,9 @@ const Remark = ({ remarksData }) => {
 				open={open}
 				handleModal={handleModal}
 				remarkModalTitle={remarkModalTitle}
+				input={input}
+				handleChangeRemark={handleChangeRemark}
+				handleSubmit={handleSubmit}
 				dropDown={dropDownData?.map((item, index) => (
 					<DropDown
 						key={index}

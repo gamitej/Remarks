@@ -3,12 +3,13 @@ import { Remarks } from "../comp";
 import { getRemarks } from "../services";
 
 const Main = () => {
+	// ============ State Handles ===============
 	const [remarksData, setRemarksData] = useState([]);
 
+	// ============ Api Call ===============
 	useEffect(() => {
 		const call = async () => {
 			const res = await getRemarks();
-			console.log(res);
 			setRemarksData(res);
 		};
 		call();
