@@ -1,7 +1,7 @@
 import http from "../httpServices/httpServices";
 import config from "../config.json";
 
-const endpoint = config.apiEndpoint + "/hi";
+const endpoint = config.apiEndpoint + "/remarks";
 
 export async function getRemarks() {
 	try {
