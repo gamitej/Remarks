@@ -17,7 +17,10 @@ const Remark = () => {
 	// ============ Handling State ===============
 	const [open, setOpen] = useState(false);
 	const [remarkModalTitle, setRemarkModalTitle] = useState("");
-	const [formData, setFormData] = useState({ remark: "Market", nav: "Nav1" });
+	const [formData, setFormData] = useState({
+		study: "coding",
+		day: "monday",
+	});
 
 	// ============ Event Handlers ===============
 	const handleModal = (val, name) => {
@@ -30,7 +33,7 @@ const Remark = () => {
 	};
 
 	const handleChange = ({ target }) => {
-		//console.log(target.name, target.value);
+		console.log(target.name, target.value);
 		setFormData({ ...formData, [target.name]: target.value });
 	};
 

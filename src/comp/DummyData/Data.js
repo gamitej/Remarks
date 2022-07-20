@@ -5,24 +5,23 @@ export const remarksData = [
 	{ date: "21-04-2021", remarkText: "hi tiwari", field: "market" },
 ];
 
-
 export const dropDownData = [
 	{
 		options: [
-			{ id: 1, value: "Market", label: "Market" },
-			{ id: 2, value: "Home", label: "Home" },
-			{ id: 3, value: "Office", label: "Office" },
+			{ id: 1, value: "coding", label: "Coding" },
+			{ id: 2, value: "frontend", label: "Frontend" },
+			{ id: 3, value: "backend", label: "Backend" },
 		],
-		id: "remark",
-		label: "Remark",
+		id: "study",
+		label: "Study",
 	},
 	{
 		options: [
-			{ id: 1, value: "Nav1", label: "Nav1" },
-			{ id: 2, value: "Nav2", label: "Nav2" },
-			{ id: 3, value: "Nav3", label: "Nav3" },
+			{ id: 1, value: "monday", label: "Monday" },
+			{ id: 2, value: "wednesday", label: "Wednesday" },
+			{ id: 3, value: "friday", label: "Friday" },
 		],
-		id: "nav",
-		label: "Nav",
+		id: "day",
+		label: "Day",
 	},
 ];
