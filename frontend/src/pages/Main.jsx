@@ -6,11 +6,12 @@ const Main = () => {
 	const [remarksData, setRemarksData] = useState([]);
 
 	useEffect(() => {
-		
+		const res = getRemarks();
+		setRemarksData(res);
 	}, []);
 	return (
 		<div className="flex flex-col justify-center items-center h-[90vh]">
-			<Remarks />
+			<Remarks remarksData={remarksData} />
 		</div>
 	);
 };

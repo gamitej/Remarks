@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { remarksData, dropDownData } from "../DummyData/Data";
+import { dropDownData } from "../DummyData/Data";
 import { RemarkModal, DropDown } from "..";
 
 // MUI
@@ -13,7 +13,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-const Remark = () => {
+const Remark = ({ remarksData }) => {
 	// ============ Handling State ===============
 	const [open, setOpen] = useState(false);
 	const [remarkModalTitle, setRemarkModalTitle] = useState("");
@@ -70,46 +70,47 @@ const Remark = () => {
 			<Divider />
 			{/* Remarks Items*/}
 			<div className="min-h-[2rem] max-h-[14em] overflow-auto w-[100%]">
-				{remarksData.map((item, index) => (
-					<div key={index}>
-						<ListItem alignItems="flex-start">
-							<ListItemText
-								primary={item.date}
-								secondary={
-									<>
-										<span className="inline font-bold">
-											{item.field}
-										</span>
-										<span className="inline mx-1">
-											- {item.remarkText}
-										</span>
-									</>
-								}
-							/>
-							<Tooltip placement="top" title="edit">
-								<IconButton
-									onClick={() =>
-										handleEdit("Edit Remark", true)
+				{remarksData &&
+					remarksData.map((item, index) => (
+						<div key={index}>
+							<ListItem alignItems="flex-start">
+								<ListItemText
+									primary={item.date}
+									secondary={
+										<>
+											<span className="inline font-bold">
+												{item.field}
+											</span>
+											<span className="inline mx-1">
+												- {item.remarkText}
+											</span>
+										</>
 									}
-								>
-									<EditIcon color="primary" />
-								</IconButton>
-							</Tooltip>
-							<Tooltip placement="top" title="delete">
-								<IconButton>
-									<DeleteIcon color="error" />
-								</IconButton>
-							</Tooltip>
-						</ListItem>
-						<Divider />
-					</div>
-				))}
+								/>
+								<Tooltip placement="top" title="edit">
+									<IconButton
+										onClick={() =>
+											handleEdit("Edit Remark", true)
+										}
+									>
+										<EditIcon color="primary" />
+									</IconButton>
+								</Tooltip>
+								<Tooltip placement="top" title="delete">
+									<IconButton>
+										<DeleteIcon color="error" />
+									</IconButton>
+								</Tooltip>
+							</ListItem>
+							<Divider />
+						</div>
+					))}
 			</div>
 			<RemarkModal
 				open={open}
 				handleModal={handleModal}
 				remarkModalTitle={remarkModalTitle}
-				dropDown={dropDownData.map((item, index) => (
+				dropDown={dropDownData?.map((item, index) => (
 					<DropDown
 						key={index}
 						label={item.label}
