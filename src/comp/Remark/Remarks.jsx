@@ -47,15 +47,23 @@ const Remark = () => {
 				{/* Drop-Down */}
 				<div className="flex flex-row gap-x-2 justify-center items-center">
 					{dropDownData?.map((item, index) => (
-						<DropDown
-							key={index}
-							label={item.label}
-							width={120}
-							id={item.id}
-							handleChange={handleChange}
-							value={formData[item.id]}
-							options={item.options}
-						/>
+						<Tooltip
+							title={formData[item.id]}
+							placement="top"
+							arrow
+						>
+							<div>
+								<DropDown
+									key={index}
+									label={item.label}
+									width={80}
+									id={item.id}
+									handleChange={handleChange}
+									value={formData[item.id]}
+									options={item.options}
+								/>
+							</div>
+						</Tooltip>
 					))}
 				</div>
 			</div>
@@ -107,7 +115,7 @@ const Remark = () => {
 							<DropDown
 								key={index}
 								label={item.label}
-								width={120}
+								width={100}
 								id={item.id}
 								handleChange={handleChange}
 								value={formData[item.id]}
