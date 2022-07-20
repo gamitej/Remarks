@@ -65,7 +65,6 @@ const RemarksModal = ({ open, handleModal, remarkModalTitle }) => {
 					/>
 					<Stack direction="row" gap={1} mt={2} mb={3}>
 						<p>DropDown</p>
-						<p>DatePicker</p>
 					</Stack>
 					<Button fullWidth variant="contained">
 						Submit

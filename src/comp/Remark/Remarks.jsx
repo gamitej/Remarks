@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { remarksData } from "../DummyData/Data";
-import { RemarkModal } from "..";
+import { remarksData, dropDownData } from "../DummyData/Data";
+import { RemarkModal, DropDown } from "..";
 
 // MUI
 import {
@@ -14,12 +14,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
 const Remark = () => {
-
-  // ============ Handling State ===============
+	// ============ Handling State ===============
 	const [open, setOpen] = useState(false);
 	const [remarkModalTitle, setRemarkModalTitle] = useState("");
+	const [formData, setFormData] = useState({ remark: "Market", nav: "Nav1" });
 
-  // ============ Event Handlers ===============
+	// ============ Event Handlers ===============
 	const handleModal = (val, name) => {
 		setOpen(val);
 		setRemarkModalTitle(name);
@@ -28,12 +28,32 @@ const Remark = () => {
 	const handleEdit = (name, val) => {
 		handleModal(val, name);
 	};
+
+	const handleChange = ({ target }) => {
+		//console.log(target.name, target.value);
+		setFormData({ ...formData, [target.name]: target.value });
+	};
+
 	return (
 		<div className="border rounded-2xl lg-mr-6 bg-white shadow-md p-3 w-[30rem]">
 			{/* Remarks Header*/}
-			<div className="flex flex-row justify-between items-center h-[3rem]">
-				<div className="flex gap-x-2 lg:gap-x-3 items-center justify-center">
-					<p className="font-semibold">Remarks</p>
+			<div className="flex flex-row justify-between items-center h-[4rem]">
+				<div className="flex gap-x-2 lg:gap-x-3 justify-center items-center ">
+					<p className="font-semibold text-xl my-1">Remarks</p>
+				</div>
+				{/* Drop-Down */}
+				<div className="flex flex-row gap-x-2 justify-center items-center">
+					{dropDownData?.map((item, index) => (
+						<DropDown
+							key={index}
+							label={item.label}
+							width={120}
+							id={item.id}
+							handleChange={handleChange}
+							value={formData[item.id]}
+							options={item.options}
+						/>
+					))}
 				</div>
 			</div>
 			<Divider />
