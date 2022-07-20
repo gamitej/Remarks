@@ -101,6 +101,17 @@ const Remark = () => {
 				open={open}
 				handleModal={handleModal}
 				remarkModalTitle={remarkModalTitle}
+				dropDown={dropDownData.map((item, index) => (
+					<DropDown
+						key={index}
+						label={item.label}
+						width={120}
+						id={item.id}
+						handleChange={handleChange}
+						value={formData[item.id]}
+						options={item.options}
+					/>
+				))}
 			/>
 		</div>
 	);

@@ -20,7 +20,7 @@ const StyledModal = styled(Modal)({
 	justifyContent: "center",
 });
 
-const RemarksModal = ({ open, handleModal, remarkModalTitle }) => {
+const RemarksModal = ({ open, handleModal, remarkModalTitle, dropDown }) => {
 	return (
 		<>
 			<Tooltip
@@ -64,7 +64,7 @@ const RemarksModal = ({ open, handleModal, remarkModalTitle }) => {
 						variant="standard"
 					/>
 					<Stack direction="row" gap={1} mt={2} mb={3}>
-						<p>DropDown</p>
+						{dropDown}
 					</Stack>
 					<Button fullWidth variant="contained">
 						Submit
