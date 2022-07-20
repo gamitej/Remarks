@@ -1,12 +1,12 @@
 import "./App.css";
-import { Remarks } from "./comp";
+import Main from "./pages/Main";
 
 function App() {
 	// eslint-disable-next-line
 	const hi = "";
 	return (
-		<div className="flex flex-col justify-center items-center h-[90vh]">
-			<Remarks/>
+		<div>
+			<Main />
 		</div>
 	);
 }
