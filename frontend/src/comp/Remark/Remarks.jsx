@@ -147,6 +147,11 @@ const Remark = ({
 							<Divider />
 						</div>
 					))}
+				{remarksData.length === 0 && (
+					<div className="flex justify-center items-center min-h-[5rem] w-[100%]">
+						No Remarks To Show
+					</div>
+				)}
 			</div>
 			<RemarkModal
 				open={open}
