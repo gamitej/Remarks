@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { dropDownData } from "../DummyData/Data";
 import { RemarkModal, DropDown } from "..";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 // MUI
 import {
@@ -16,11 +18,12 @@ import EditIcon from "@mui/icons-material/Edit";
 const Remark = ({
 	remarksData,
 	handlePostRemark,
-	handleDelRemark,
 	handleUpdateRemark,
+	handleDelRemark,
 }) => {
 	// ============ Handling State ===============
 	const [open, setOpen] = useState(false);
+	const [id, setId] = useState("");
 	const [remarkModalTitle, setRemarkModalTitle] = useState("");
 	const [input, setInput] = useState("");
 	const [formData, setFormData] = useState({
@@ -39,12 +42,13 @@ const Remark = ({
 		});
 	};
 
-	const handleEdit = (name, val, text, remarkStudy, remarkDay) => {
+	const handleEdit = (name, val, text, remarkStudy, remarkDay, id) => {
 		const study = "study";
 		const day = "day";
 		handleModal(val, name);
 		setFormData({ ...formData, [study]: remarkStudy, [day]: remarkDay });
 		setInput(text);
+		setId(id);
 	};
 
 	const handleChange = ({ target }) => {
@@ -59,11 +63,32 @@ const Remark = ({
 
 	const handleSubmit = () => {
 		//console.log({ ...formData, remark: input });
-		handlePostRemark({ ...formData, remark: input });
+		if (remarkModalTitle === "Edit Remark") {
+			handleUpdateRemark(id, { ...formData, remark: input });
+		} else {
+			handlePostRemark({ ...formData, remark: input });
+		}
+
 		setInput("");
 		setFormData({
 			study: "coding",
 			day: "monday",
+		});
+	};
+
+	const handleDelete = (id) => {
+		confirmAlert({
+			title: "Confirm to submit",
+			message: "Are you sure to do this.",
+			buttons: [
+				{
+					label: "Yes",
+					onClick: () => handleDelRemark(id),
+				},
+				{
+					label: "No",
+				},
+			],
 		});
 	};
 
@@ -103,7 +128,8 @@ const Remark = ({
 												true,
 												item.remark,
 												item.study,
-												item.day
+												item.day,
+												item.id
 											)
 										}
 									>
@@ -112,7 +138,7 @@ const Remark = ({
 								</Tooltip>
 								<Tooltip placement="top" title="delete">
 									<IconButton
-										onClick={() => handleDelRemark(item.id)}
+										onClick={() => handleDelete(item.id)}
 									>
 										<DeleteIcon color="error" />
 									</IconButton>

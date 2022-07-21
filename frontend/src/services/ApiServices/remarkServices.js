@@ -23,6 +23,7 @@ export async function postRemark(req) {
 }
 
 export async function putRemark(id, req) {
+	console.log(id, req);
 	try {
 		const { data } = await http.put(`${endpoint}/${id}`, req);
 		return data;
