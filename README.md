@@ -1,6 +1,6 @@
-## Currently In Development Mode
+## Remarks
 
-### FrontEnd 
+### FrontEnd
 
 1. ReactJS
 2. Redux & Redux Thunk
