@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Remarks } from "../comp";
-import { getRemarks } from "../services";
+import { getRemarks, postRemark } from "../services";
 
 const Main = () => {
 	// ============ State Handles ===============
 	const [remarksData, setRemarksData] = useState([]);
 
-	// ============ Api Call ===============
+	// ============ Api Calls ===============
 	useEffect(() => {
 		const call = async () => {
 			const res = await getRemarks();
@@ -14,9 +14,21 @@ const Main = () => {
 		};
 		call();
 	}, []);
+
+	const handlePostRemark = (req) => {
+		const call = async (req) => {
+			const res = await postRemark(req);
+			console.log(res);
+		};
+		call(req);
+	};
+
 	return (
 		<div className="flex flex-col justify-center items-center h-[90vh]">
-			<Remarks remarksData={remarksData} />
+			<Remarks
+				remarksData={remarksData}
+				handlePostRemark={handlePostRemark}
+			/>
 		</div>
 	);
 };

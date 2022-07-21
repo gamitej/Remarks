@@ -32,3 +32,12 @@ def updateTable(table_name, rows_to_update, where_cond, values):
     cursor.execute(update_query, values)
     connection.commit()
     connection.close()
+
+
+def deleteRowFromTable(table_name, id):
+    connection = connect_to_db()
+    cursor = connection.cursor()
+    del_query = f"DELETE from {table_name} where id = {id}"
+    cursor.execute(del_query)
+    connection.commit()
+    connection.close()

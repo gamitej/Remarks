@@ -13,7 +13,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-const Remark = ({ remarksData }) => {
+const Remark = ({ remarksData, handlePostRemark }) => {
 	// ============ Handling State ===============
 	const [open, setOpen] = useState(false);
 	const [remarkModalTitle, setRemarkModalTitle] = useState("");
@@ -53,7 +53,8 @@ const Remark = ({ remarksData }) => {
 	};
 
 	const handleSubmit = () => {
-		console.log({ ...formData, remark: input });
+		//console.log({ ...formData, remark: input });
+		handlePostRemark({ ...formData, remark: input });
 		setInput("");
 		setFormData({
 			study: "coding",
