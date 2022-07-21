@@ -8,6 +8,8 @@ const Main = () => {
 	const [remarksData, setRemarksData] = useState([]);
 
 	// ============ Api Calls ===============
+
+	// On page load
 	useEffect(() => {
 		const call = async () => {
 			const res = await getRemarks();
@@ -16,10 +18,19 @@ const Main = () => {
 		call();
 	}, []);
 
+	const handleGetRemark = () => {
+		const call = async () => {
+			const res = await getRemarks();
+			setRemarksData(res);
+		};
+		call();
+	};
+
 	const handlePostRemark = (req) => {
 		const call = async (req) => {
 			const res = await postRemark(req);
 			toast.success(res.message);
+			handleGetRemark();
 		};
 		call(req);
 	};
@@ -28,6 +39,7 @@ const Main = () => {
 		const call = async (id, req) => {
 			const res = await putRemark(id, req);
 			toast.success(res.message);
+			handleGetRemark();
 		};
 		call(id, req);
 	};
@@ -36,6 +48,7 @@ const Main = () => {
 		const call = async (id) => {
 			const res = await delRemark(id);
 			toast.success(res.message);
+			handleGetRemark();
 		};
 		call(id);
 	};

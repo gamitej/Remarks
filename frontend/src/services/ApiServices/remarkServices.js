@@ -6,7 +6,6 @@ const endpoint = config.apiEndpoint + "/remarks";
 export async function getRemarks() {
 	try {
 		const { data } = await http.get(endpoint);
-
 		return data.data;
 	} catch (error) {
 		return [];
