@@ -22,14 +22,14 @@ def getPostRemark():
         return jsonify({"data": 'Error Occured'}), 500
 
 
-@app.route('/remarks/<id>', methods=["DELETE", "PUT"])
+@app.route('/remarks/<string:id>', methods=["DELETE", "PUT"])
 def putDeleteRemark(id):
     try:
         if request.method == "DELETE":
             res = delRemark(id)
             if res:
-                return jsonify({"data": res}), 200
-            return jsonify({"data": "Remark Deleted Already"}), 200
+                return jsonify({"data": "Remark Deleted Already"}), 200
+            return jsonify({"data": "Remark Deleted Successfully"}), 200
         if request.method == "PUT":
             req = request.get_json()
             study, remarkText, day = req["study"], req["remark"], req["day"]

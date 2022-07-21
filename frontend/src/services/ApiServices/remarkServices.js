@@ -21,3 +21,21 @@ export async function postRemark(req) {
 		return [];
 	}
 }
+
+export async function putRemark(id, req) {
+	try {
+		const { data } = await http.put(`${endpoint}/${id}`, req);
+		return data;
+	} catch (error) {
+		return [];
+	}
+}
+
+export async function delRemark(id) {
+	try {
+		const { data } = await http.delete(`${endpoint}/${id}`);
+		return data;
+	} catch (error) {
+		return [];
+	}
+}

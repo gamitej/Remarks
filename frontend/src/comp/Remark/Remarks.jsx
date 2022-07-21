@@ -13,7 +13,12 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-const Remark = ({ remarksData, handlePostRemark }) => {
+const Remark = ({
+	remarksData,
+	handlePostRemark,
+	handleDelRemark,
+	handleUpdateRemark,
+}) => {
 	// ============ Handling State ===============
 	const [open, setOpen] = useState(false);
 	const [remarkModalTitle, setRemarkModalTitle] = useState("");
@@ -106,7 +111,9 @@ const Remark = ({ remarksData, handlePostRemark }) => {
 									</IconButton>
 								</Tooltip>
 								<Tooltip placement="top" title="delete">
-									<IconButton>
+									<IconButton
+										onClick={() => handleDelRemark(item.id)}
+									>
 										<DeleteIcon color="error" />
 									</IconButton>
 								</Tooltip>
