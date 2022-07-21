@@ -11,6 +11,7 @@ export const dropDownData = [
 			{ id: 1, value: "coding", label: "Coding" },
 			{ id: 2, value: "frontend", label: "Frontend" },
 			{ id: 3, value: "backend", label: "Backend" },
+			{ id: 4, value: "system Design", label: "System Design" },
 		],
 		id: "study",
 		label: "Study",
@@ -18,8 +19,10 @@ export const dropDownData = [
 	{
 		options: [
 			{ id: 1, value: "monday", label: "Monday" },
-			{ id: 2, value: "wednesday", label: "Wednesday" },
-			{ id: 3, value: "friday", label: "Friday" },
+			{ id: 2, value: "tuesday", label: "Tuesday" },
+			{ id: 4, value: "wednesday", label: "Wednesday" },
+			{ id: 3, value: "thrusday", label: "Thrusday" },
+			{ id: 5, value: "friday", label: "Friday" },
 		],
 		id: "day",
 		label: "Day",

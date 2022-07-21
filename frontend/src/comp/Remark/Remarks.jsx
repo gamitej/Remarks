@@ -111,7 +111,7 @@ const Remark = ({
 									primary={item.day}
 									secondary={
 										<>
-											<span className="inline font-bold">
+											<span className="inline font-bold capitalize">
 												{item.study}
 											</span>
 											<span className="inline mx-1">
