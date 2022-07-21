@@ -16,7 +16,9 @@ def getPostRemark():
             req = request.get_json()
             study, remarkText, day = req["study"], req["remark"], req["day"]
             res = postRemark(study, remarkText, day)
-            return jsonify({"message": res}), 200
+            if res:
+                return jsonify({"message": "Remark Added Successfully"}), 200
+            return jsonify({"message": res}), 500
     except Exception as e:
         print(e)
         return jsonify({"data": 'Error Occured'}), 500

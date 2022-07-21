@@ -22,8 +22,7 @@ def getRemarks():
 
 def postRemark(study, remark, day):
     id = uuid.uuid1().hex
-    insertIntoTable(table_name, "(?,?,?,?)", (id, study, remark, day))
-    res = "Remark Added Successfully"
+    res = insertIntoTable(table_name, "(?,?,?,?)", (id, study, remark, day))
     return res
 
 
