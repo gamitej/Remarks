@@ -19,7 +19,7 @@ def getPostRemark():
             if res:
                 return jsonify({"message": res}), 500
             return jsonify({"message": "Remark Added Successfully"}), 200
-            
+
     except Exception as e:
         print(e)
         return jsonify({"data": 'Error Occured'}), 500
@@ -31,15 +31,15 @@ def putDeleteRemark(id):
         if request.method == "DELETE":
             res = delRemark(id)
             if res:
-                return jsonify({"data": "Remark Deleted Already"}), 200
-            return jsonify({"data": "Remark Deleted Successfully"}), 200
+                return jsonify({"message": "Remark Deleted Already"}), 200
+            return jsonify({"message": "Remark Deleted Successfully"}), 200
         if request.method == "PUT":
             req = request.get_json()
             study, remarkText, day = req["study"], req["remark"], req["day"]
             res = updateRemark(study, remarkText, day, id)
             if res:
                 return jsonify({"message": res}), 500
-            return jsonify({"message": "Reamrk Updated successfully"}), 200
+            return jsonify({"message": "Remark Updated successfully"}), 200
     except Exception as e:
         print(e)
         return jsonify({"data": 'Error Occured'}), 500
