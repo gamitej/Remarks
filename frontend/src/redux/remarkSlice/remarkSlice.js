@@ -22,8 +22,8 @@ export const postRemarks = createAsyncThunk(
 export const putRemarks = createAsyncThunk(
 	"remark/putRemarks",
 	async (requ) => {
-		// eslint-disable-next-line
 		const { id, req } = requ;
+		// eslint-disable-next-line
 		const res = await putRemark(id, req);
 		const data = await getRemarks();
 		return data;
