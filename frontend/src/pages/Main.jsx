@@ -1,29 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { Remarks } from "../comp";
-import { getRemarks, postRemark, putRemark, delRemark } from "../services";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+
+import { Remarks } from "../comp";
+import { getRemarksData } from "../redux/remarkSlice/remarkSlice.js";
+import { getRemarks, postRemark, putRemark, delRemark } from "../services";
+import { fetchRemarks } from "../redux/remarkSlice/remarkSlice.js";
 
 const Main = () => {
+	const dispatch = useDispatch();
+
+	const remarksData = useSelector(getRemarksData);
+	console.log(remarksData);
 	// ============ State Handles ===============
-	const [remarksData, setRemarksData] = useState([]);
+	//const [remarksData, setRemarksData] = useState([]);
 
 	// ============ Api Calls ===============
 
 	// On page load
 	useEffect(() => {
-		const call = async () => {
-			const res = await getRemarks();
-			setRemarksData(res);
-		};
-		call();
+		dispatch(fetchRemarks());
+		// eslint-disable-next-line
 	}, []);
 
 	const handleGetRemark = () => {
-		const call = async () => {
-			const res = await getRemarks();
-			setRemarksData(res);
-		};
-		call();
+		dispatch(fetchRemarks());
 	};
 
 	const handlePostRemark = (req) => {

@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getRemarks } from "../../services/index";
+import { getRemarks } from "../../services";
 
 export const fetchRemarks = createAsyncThunk(
 	"remark/fetchRemarks",
 	async () => {
-		const { data } = await getRemarks();
-		return data.data;
+		const data = await getRemarks();
+		console.log(data);
+		return data;
 	}
 );
 
@@ -27,6 +28,7 @@ const remarkSlice = createSlice({
 		},
 		[fetchRemarks.fulfilled]: (state, { payload }) => {
 			console.log("Success -> Fetch Remarks");
+			console.log(payload);
 			return { ...state, remarks: payload };
 		},
 		[fetchRemarks.rejected]: (state) => {
