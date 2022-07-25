@@ -16,7 +16,7 @@ export async function getRemarks() {
 export async function postRemark(req) {
 	try {
 		const { data } = await http.post(endpoint, req);
-		toast.success("Remark Added Successfull!!!");
+		toast.success("Remark Added Successfully !!!");
 		return data;
 	} catch (error) {
 		return [];
@@ -26,7 +26,7 @@ export async function postRemark(req) {
 export async function putRemark(id, req) {
 	try {
 		const { data } = await http.put(`${endpoint}/${id}`, req);
-		toast.success("Remark Updated Successfull!!!");
+		toast.success("Remark Updated Successfully !!!");
 		return data;
 	} catch (error) {
 		return [];
@@ -36,7 +36,7 @@ export async function putRemark(id, req) {
 export async function delRemark(id) {
 	try {
 		const { data } = await http.delete(`${endpoint}/${id}`);
-		toast.success("Remark Deleted Successfull!!!");
+		toast.success("Remark Deleted Successfully !!!");
 		return data;
 	} catch (error) {
 		return [];
