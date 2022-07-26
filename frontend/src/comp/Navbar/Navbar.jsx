@@ -9,6 +9,7 @@ const Navbar = () => {
 						Remarks
 					</span>
 				</div>
+				{/* Burger Menu */}
 				<div class="block lg:hidden">
 					<button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
 						<svg
@@ -21,7 +22,7 @@ const Navbar = () => {
 						</svg>
 					</button>
 				</div>
-				<div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+				<div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto sm:hidden">
 					<div className="text-sm lg:flex-grow">
 						<a
 							href="#responsive-header"
