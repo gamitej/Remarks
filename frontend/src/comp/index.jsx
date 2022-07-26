@@ -1,3 +1,6 @@
+// Navbar
+export { default as Navbar } from "./Navbar/Navbar";
+
 // Remarks
 export { default as Remarks } from "./Remark/Remarks";
 export { default as RemarkModal } from "./Remark/RemarkModal";
