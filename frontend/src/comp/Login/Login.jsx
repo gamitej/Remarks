@@ -64,6 +64,7 @@ const Login = () => {
 										placeholder="Email address"
 										value={form.userId}
 										onChange={handleChange}
+										autoComplete="off"
 									/>
 									{error.message &&
 										error.show &&
@@ -85,6 +86,7 @@ const Login = () => {
 										placeholder="Password"
 										value={form.password}
 										onChange={handleChange}
+										autoComplete={false}
 									/>
 									{error.message &&
 										error.show &&
@@ -110,7 +112,7 @@ const Login = () => {
 										</label>
 									</div>
 									<a href="#!" className="text-gray-800">
-										Forgot password?
+										Forgot Password ?
 									</a>
 								</div>
 
@@ -122,7 +124,7 @@ const Login = () => {
 										Login
 									</button>
 									<p className="text-sm font-semibold mt-2 pt-1 mb-0">
-										Don't have an account?
+										Don't have an account ?{" "}
 										<a
 											href="#!"
 											className="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
