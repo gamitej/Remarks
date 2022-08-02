@@ -10,3 +10,4 @@ export { default as DropDown } from "./subcomp/DropDown";
 
 // Login
 export { default as Login } from "./Login/Login";
+export { default as ProtectedRoute } from "./Login/ProtectedRoute";

@@ -11,6 +11,8 @@ const Login = () => {
 		userId: Joi.string().required().min(8).label("User Id"),
 	});
 
+	//========================== Event Handlers Start ================================
+
 	const handleChange = (e) => {
 		setUserId(e.target.value);
 	};
