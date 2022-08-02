@@ -1,8 +1,9 @@
 import "./App.css";
-import Main from "./pages/Main";
+import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Navbar } from "./comp";
+import Main from "./pages/Main";
+import { Navbar, Login } from "./comp";
 
 function App() {
 	// eslint-disable-next-line
@@ -11,7 +12,10 @@ function App() {
 		<div>
 			<ToastContainer />
 			<Navbar />
-			<Main />
+			<Routes>
+				<Route path="/" element={<Main />} />
+				<Route path="/login" element={<Login />} />
+			</Routes>
 		</div>
 	);
 }

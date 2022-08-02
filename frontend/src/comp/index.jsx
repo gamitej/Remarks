@@ -7,3 +7,6 @@ export { default as RemarkModal } from "./Remark/RemarkModal";
 
 // subcomp
 export { default as DropDown } from "./subcomp/DropDown";
+
+// Login
+export { default as Login } from "./Login/Login";

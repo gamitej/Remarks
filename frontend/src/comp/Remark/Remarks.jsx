@@ -104,7 +104,7 @@ const Remark = ({
 			{/* Remarks Items*/}
 			<div className="min-h-[2rem] max-h-[14em] overflow-auto w-[100%]">
 				{remarksData &&
-					remarksData.map((item, index) => (
+					remarksData.map((item) => (
 						<div key={item.id}>
 							<ListItem alignItems="flex-start">
 								<ListItemText
@@ -147,7 +147,7 @@ const Remark = ({
 							<Divider />
 						</div>
 					))}
-				{remarksData.length === 0 && (
+				{remarksData && remarksData.length === 0 && (
 					<div className="flex justify-center items-center min-h-[5rem] w-[100%]">
 						No Remarks To Show
 					</div>
