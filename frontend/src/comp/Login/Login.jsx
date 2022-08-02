@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import Joi from "joi";
+import { Alert } from "@mui/material";
 
 const Login = () => {
+	const [userId, setUserId] = useState("");
+
+	const [error, setError] = useState({ message: undefined, show: false });
+
+	const schema = Joi.object({
+		userId: Joi.string().required().min(8).label("User Id"),
+	});
+
+	const handleChange = (e) => {
+		setUserId(e.target.value);
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		console.log(userId);
+		const { error } = schema.validate({ userId }, { allowUnknown: true });
+		console.log(error);
+		if (error) {
+			return setError({ message: error.message, show: true });
+		}
+		setUserId("");
+	};
+
+	const handleAlertChange = () => {
+		setError({ message: error.message, show: false });
+	};
+
 	return (
 		<div className="w-full flex justify-center">
 			<section className="h-[80vh] w-[80%]">
@@ -14,17 +43,27 @@ const Login = () => {
 							/>
 						</div>
 						<div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
-							<form>
+							<form onSubmit={handleSubmit}>
 								<div className="mb-6">
 									<input
 										type="text"
 										className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-										id="exampleFormControlInput2"
+										id="exampleFormControlInput1"
 										placeholder="Email address"
+										value={userId}
+										onChange={handleChange}
 									/>
+									{error.message && error.show && (
+										<Alert
+											onClose={handleAlertChange}
+											severity="error"
+										>
+											{error.message}
+										</Alert>
+									)}
 								</div>
 
-								<div className="mb-6">
+								{/* <div className="mb-6">
 									<input
 										type="password"
 										className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -50,11 +89,11 @@ const Login = () => {
 									<a href="#!" className="text-gray-800">
 										Forgot password?
 									</a>
-								</div>
+								</div> */}
 
 								<div className="text-center lg:text-left">
 									<button
-										type="button"
+										type="submit"
 										className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
 									>
 										Login
