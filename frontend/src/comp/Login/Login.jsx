@@ -3,29 +3,38 @@ import Joi from "joi";
 import { Alert } from "@mui/material";
 
 const Login = () => {
-	const [userId, setUserId] = useState("");
+	const [form, setForm] = useState({ userId: "", password: "" });
 
-	const [error, setError] = useState({ message: undefined, show: false });
+	const [error, setError] = useState({
+		message: undefined,
+		show: false,
+		label: "",
+	});
 
 	const schema = Joi.object({
 		userId: Joi.string().required().min(8).label("User Id"),
+		password: Joi.string().required().min(8).label("Password"),
 	});
 
 	//========================== Event Handlers Start ================================
 
 	const handleChange = (e) => {
-		setUserId(e.target.value);
+		const name = e.target.name;
+		setForm({ ...form, [name]: e.target.value });
 	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(userId);
-		const { error } = schema.validate({ userId }, { allowUnknown: true });
-		console.log(error);
+		console.log(form);
+		const { error } = schema.validate(form, { allowUnknown: true });
 		if (error) {
-			return setError({ message: error.message, show: true });
+			return setError({
+				message: error.message,
+				show: true,
+				label: error.details[0].context.label,
+			});
 		}
-		setUserId("");
+		setForm({ userId: "", password: "" });
 	};
 
 	const handleAlertChange = () => {
@@ -46,32 +55,47 @@ const Login = () => {
 						</div>
 						<div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
 							<form onSubmit={handleSubmit}>
+								{/* Username */}
 								<div className="mb-6">
 									<input
 										type="text"
 										className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-										id="exampleFormControlInput1"
+										name="userId"
 										placeholder="Email address"
-										value={userId}
+										value={form.userId}
 										onChange={handleChange}
 									/>
-									{error.message && error.show && (
-										<Alert
-											onClose={handleAlertChange}
-											severity="error"
-										>
-											{error.message}
-										</Alert>
-									)}
+									{error.message &&
+										error.show &&
+										error.label === "User Id" && (
+											<Alert
+												onClose={handleAlertChange}
+												severity="error"
+											>
+												{error.message}
+											</Alert>
+										)}
 								</div>
-
-								{/* <div className="mb-6">
+								{/* Password */}
+								<div className="mb-6">
 									<input
 										type="password"
 										className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-										id="exampleFormControlInput2"
+										name="password"
 										placeholder="Password"
+										value={form.password}
+										onChange={handleChange}
 									/>
+									{error.message &&
+										error.show &&
+										error.label === "Password" && (
+											<Alert
+												onClose={handleAlertChange}
+												severity="error"
+											>
+												{error.message}
+											</Alert>
+										)}
 								</div>
 
 								<div className="flex justify-between items-center mb-6">
@@ -81,17 +105,14 @@ const Login = () => {
 											className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
 											id="exampleCheck2"
 										/>
-										<label
-											className="form-check-label inline-block text-gray-800"
-											for="exampleCheck2"
-										>
+										<label className="form-check-label inline-block text-gray-800">
 											Remember me
 										</label>
 									</div>
 									<a href="#!" className="text-gray-800">
 										Forgot password?
 									</a>
-								</div> */}
+								</div>
 
 								<div className="text-center lg:text-left">
 									<button

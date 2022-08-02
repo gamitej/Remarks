@@ -12,6 +12,7 @@ function App() {
 		<div>
 			<ToastContainer />
 			<Navbar />
+			{/* Routes */}
 			<Routes>
 				<Route
 					path="/"
