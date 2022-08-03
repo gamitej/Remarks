@@ -23,7 +23,7 @@ function App() {
 			<Navbar />
 			{/* Routes */}
 			<Routes>
-				{/* Protected Route Done */}
+				{/* Protected Route */}
 				<Route path="/" element={<ProtectedRoute />}>
 					<Route path="/" element={<Main />} />
 				</Route>

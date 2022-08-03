@@ -10,7 +10,7 @@ const Navbar = () => {
 	const dispatch = useDispatch();
 	const handleLogout = () => {
 		window.sessionStorage.removeItem("user");
-		toast.success("User Logout Successfull");
+		toast.success("User Logout Successfull", { autoClose: 1000 });
 		dispatch(logout());
 		navigate("/login");
 	};

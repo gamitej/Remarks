@@ -10,9 +10,9 @@ export async function postlogin(req) {
 		data.msg === "Username not found" ||
 		data.msg === "Password Incorrect"
 	) {
-		toast.error(data.msg);
+		toast.error(data.msg, { autoClose: 1000 });
 	} else {
-		toast.success(data.msg);
+		toast.success(data.msg, { autoClose: 1000 });
 		window.sessionStorage.setItem("user", req.userId);
 	}
 	return data.msg;
