@@ -1,15 +1,14 @@
-import "./App.css";
+import Main from "./pages/Main";
+import NotFound from "./pages/NotFound";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Main from "./pages/Main";
-import NotFound from "./pages/NotFound";
 import { Navbar, Login, ProtectedRoute } from "./comp";
 import { postLogins, getUserLogin } from "./redux/loginSlice/loginSlice";
 
 function App() {
-	//==================== Redux =========================
+	//==================== Redux Call =========================
 
 	const dispatch = useDispatch();
 	const isAuth = useSelector(getUserLogin);
