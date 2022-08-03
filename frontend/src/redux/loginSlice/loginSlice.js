@@ -6,13 +6,20 @@ export const postLogins = createAsyncThunk("login/postLogins", async (req) => {
 	return data;
 });
 
+const check = window.sessionStorage.getItem("user") || false;
+
 const initialState = {
-	isLoggined: false,
+	isLoggined: check,
 };
 
 const loginSlice = createSlice({
 	name: "login",
 	initialState,
+	reducers: {
+		logout: (state) => {
+			state.isLoggined = false;
+		},
+	},
 	extraReducers: {
 		// post
 		[postLogins.pending]: (state) => {
@@ -20,13 +27,18 @@ const loginSlice = createSlice({
 		},
 		[postLogins.fulfilled]: (state, { payload }) => {
 			console.log("Success -> Login");
-			return { ...state, isLoggined: true };
+			return {
+				...state,
+				isLoggined: window.sessionStorage.getItem("user"),
+			};
 		},
 		[postLogins.rejected]: (state) => {
 			console.log("Rejected -> Login");
 		},
 	},
 });
+
+export const { logout } = loginSlice.actions;
 
 export const getUserLogin = (state) => state.login.isLoggined;
 
