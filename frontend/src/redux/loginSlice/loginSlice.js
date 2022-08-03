@@ -10,7 +10,7 @@ export const postLogins = createAsyncThunk("login/postLogins", async (req) => {
 const check = checkUser() || false;
 
 const initialState = {
-	isLoggined: check,
+	isLoggedIn: check,
 };
 
 const loginSlice = createSlice({
@@ -18,7 +18,7 @@ const loginSlice = createSlice({
 	initialState,
 	reducers: {
 		logout: (state) => {
-			state.isLoggined = false;
+			state.isLoggedIn = false;
 		},
 	},
 	extraReducers: {
@@ -30,7 +30,7 @@ const loginSlice = createSlice({
 			console.log("Success -> Login");
 			return {
 				...state,
-				isLoggined: checkUser(),
+				isLoggedIn: checkUser(),
 			};
 		},
 		[postLogins.rejected]: (state) => {
@@ -41,6 +41,6 @@ const loginSlice = createSlice({
 
 export const { logout } = loginSlice.actions;
 
-export const getUserLogin = (state) => state.login.isLoggined;
+export const getUserLogin = (state) => state.login.isLoggedIn;
 
 export default loginSlice.reducer;

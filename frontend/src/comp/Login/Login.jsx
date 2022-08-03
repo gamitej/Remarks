@@ -119,9 +119,9 @@ const Login = ({ handleLogin, isAuth }) => {
 											Remember me
 										</label>
 									</div>
-									<a href="#!" className="text-gray-800">
+									{/* <a href="#!" className="text-gray-800">
 										Forgot Password ?
-									</a>
+									</a> */}
 								</div>
 
 								<div className="text-center lg:text-left">
