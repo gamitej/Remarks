@@ -1,9 +1,8 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { checkUser } from "../../services";
 
-const ProtectedRoute = () => {
-	const isLoggined = checkUser();
+const ProtectedRoute = ({ isAuth }) => {
+	const isLoggined = isAuth;
 	return !isLoggined ? <Navigate to="/login" replace /> : <Outlet />;
 };
 

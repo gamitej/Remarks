@@ -51,10 +51,15 @@ const RemarksModal = ({
 			>
 				<Box
 					width={400}
-					height={320}
+					height={350}
 					bgcolor="whitesmoke"
 					p={3}
 					borderRadius={5}
+					sx={{
+						display: "flex",
+						flexDirection: "column",
+						justifyContent: "space-between",
+					}}
 				>
 					<Typography
 						variant="h5"
@@ -68,7 +73,7 @@ const RemarksModal = ({
 						sx={{ width: "100%", marginTop: "2rem" }}
 						id="standard-multiline-static"
 						multiline
-						rows={2}
+						rows={3.5}
 						placeholder="write remark ..."
 						variant="standard"
 						value={input}

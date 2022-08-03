@@ -114,7 +114,7 @@ const Remark = ({
 											<span className="inline font-bold capitalize">
 												{item.study}
 											</span>
-											<span className="inline mx-1">
+											<span className="inline mx-1 whitespace-pre-line">
 												- {item.remark}
 											</span>
 										</>

@@ -11,9 +11,11 @@ export async function postlogin(req) {
 		data.msg === "Password Incorrect"
 	) {
 		toast.error(data.msg, { autoClose: 1000 });
-	} else {
+	} else if (data.msg === "Login Successfull") {
 		toast.success(data.msg, { autoClose: 1000 });
 		window.sessionStorage.setItem("user", req.userId);
+	} else {
+		toast.error("Something Went Wrong",{autoClose:1200});
 	}
 	return data.msg;
 }

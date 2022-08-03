@@ -9,9 +9,7 @@ import { postLogins, getUserLogin } from "./redux/loginSlice/loginSlice";
 
 function App() {
 	const dispatch = useDispatch();
-	const user = useSelector(getUserLogin);
-
-	console.log(user);
+	const isAuth = useSelector(getUserLogin);
 
 	const handleLogin = (req) => {
 		dispatch(postLogins(req));
@@ -24,12 +22,14 @@ function App() {
 			{/* Routes */}
 			<Routes>
 				{/* Protected Route */}
-				<Route path="/" element={<ProtectedRoute />}>
+				<Route path="/" element={<ProtectedRoute isAuth={isAuth} />}>
 					<Route path="/" element={<Main />} />
 				</Route>
 				<Route
 					path="/login"
-					element={<Login handleLogin={handleLogin} />}
+					element={
+						<Login handleLogin={handleLogin} isAuth={isAuth} />
+					}
 				/>
 			</Routes>
 		</div>
