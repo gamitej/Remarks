@@ -14,14 +14,14 @@ const Login = ({ handleLogin, isAuth }) => {
 		label: "",
 	});
 
-	//========================== Joi Schema ================================
+	//========================== Joi Schema ==================================
 
 	const schema = Joi.object({
 		userId: Joi.string().required().min(6).label("User Id"),
 		password: Joi.string().required().min(4).label("Password"),
 	});
 
-	//========================== Event Handlers Start ================================
+	//======================== Event Handlers Start ==========================
 
 	const handleChange = (e) => {
 		const name = e.target.name;

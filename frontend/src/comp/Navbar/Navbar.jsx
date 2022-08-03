@@ -6,9 +6,12 @@ import { useDispatch } from "react-redux";
 
 const Navbar = () => {
 	const dispatch = useDispatch();
+
+	//========================== Event Handlers ================================
+
 	const handleLogout = () => {
 		window.sessionStorage.removeItem("user");
-		toast.success("User Logout Successfull", { autoClose: 1000 });
+		toast.success("Logout Successfull", { autoClose: 1000 });
 		dispatch(logout());
 	};
 
@@ -41,7 +44,6 @@ const Navbar = () => {
 						>
 							
 						</a>
-						
 					</div>
 					<div>
 						{checkUser() && (
