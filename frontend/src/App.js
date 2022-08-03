@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Main from "./pages/Main";
+import NotFound from "./pages/NotFound";
 import { Navbar, Login, ProtectedRoute } from "./comp";
 import { postLogins, getUserLogin } from "./redux/loginSlice/loginSlice";
 
@@ -31,6 +32,7 @@ function App() {
 						<Login handleLogin={handleLogin} isAuth={isAuth} />
 					}
 				/>
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</div>
 	);
