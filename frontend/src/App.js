@@ -9,8 +9,12 @@ import { Navbar, Login, ProtectedRoute } from "./comp";
 import { postLogins, getUserLogin } from "./redux/loginSlice/loginSlice";
 
 function App() {
+	//==================== Redux =========================
+
 	const dispatch = useDispatch();
 	const isAuth = useSelector(getUserLogin);
+
+	//==================== Event Handlers =========================
 
 	const handleLogin = (req) => {
 		dispatch(postLogins(req));
@@ -32,6 +36,7 @@ function App() {
 						<Login handleLogin={handleLogin} isAuth={isAuth} />
 					}
 				/>
+				{/* Page Not Found */}
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</div>

@@ -7,6 +7,7 @@ export const postLogins = createAsyncThunk("login/postLogins", async (req) => {
 	return data;
 });
 
+// check user in sessionStorage
 const check = checkUser() || false;
 
 const initialState = {
