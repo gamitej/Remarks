@@ -23,14 +23,10 @@ function App() {
 			<Navbar />
 			{/* Routes */}
 			<Routes>
-				<Route
-					path="/"
-					element={
-						<ProtectedRoute>
-							<Main />
-						</ProtectedRoute>
-					}
-				/>
+				{/* Protected Route Done */}
+				<Route path="/" element={<ProtectedRoute />}>
+					<Route path="/" element={<Main />} />
+				</Route>
 				<Route
 					path="/login"
 					element={<Login handleLogin={handleLogin} />}
