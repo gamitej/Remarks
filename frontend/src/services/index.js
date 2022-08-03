@@ -5,4 +5,6 @@ import {
 	putRemark,
 } from "./ApiServices/remarkServices";
 
-export { getRemarks, postRemark, delRemark, putRemark };
+import { postlogin, checkUser } from "./ApiServices/loginService";
+
+export { getRemarks, postRemark, delRemark, putRemark, postlogin, checkUser };

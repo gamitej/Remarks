@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Joi from "joi";
 import { Alert } from "@mui/material";
+import { checkUser } from "../../services";
+import { Navigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
 	const [form, setForm] = useState({ userId: "", password: "" });
 
 	const [error, setError] = useState({
@@ -12,8 +14,8 @@ const Login = () => {
 	});
 
 	const schema = Joi.object({
-		userId: Joi.string().required().min(8).label("User Id"),
-		password: Joi.string().required().min(8).label("Password"),
+		userId: Joi.string().required().min(6).label("User Id"),
+		password: Joi.string().required().min(4).label("Password"),
 	});
 
 	//========================== Event Handlers Start ================================
@@ -34,6 +36,7 @@ const Login = () => {
 				label: error.details[0].context.label,
 			});
 		}
+		handleLogin(form);
 		setForm({ userId: "", password: "" });
 	};
 
@@ -44,6 +47,7 @@ const Login = () => {
 	const inputClassName =
 		"form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none";
 
+	if (checkUser()) return <Navigate to="/" replace={true} />;
 	return (
 		<div className="w-full flex justify-center">
 			<section className="h-[80vh] w-[80%]">
@@ -89,7 +93,7 @@ const Login = () => {
 										placeholder="Password"
 										value={form.password}
 										onChange={handleChange}
-										autoComplete={false}
+										autoComplete="off"
 									/>
 									{error.message &&
 										error.show &&

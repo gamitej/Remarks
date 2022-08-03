@@ -1,9 +1,25 @@
+import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from remark.rem import getRemarks, postRemark, delRemark, updateRemark
 
 app = Flask(__name__)
 CORS(app)
+
+
+@app.route('/login', methods=["POST"])
+def login():
+    try:
+        req = request.get_json()
+        userId, passwd = req["userId"], req["password"]
+        if userId != "Amitej":
+            return jsonify({"msg": "Username not found"}), 200
+        if passwd != "1234":
+            return jsonify({"msg": "Password Incorrect"}), 200
+        return jsonify({"msg": "Login Successfull"}), 200
+    except Exception as e:
+        print(e)
+        return jsonify({"msg": "Something went wrong"}), 500
 
 
 @app.route('/remarks', methods=["GET", "POST"])
