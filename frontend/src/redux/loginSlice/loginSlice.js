@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { postlogin } from "../../services";
+import { checkUser } from "../../services";
 
 export const postLogins = createAsyncThunk("login/postLogins", async (req) => {
 	const data = await postlogin(req);
 	return data;
 });
 
-const check = window.sessionStorage.getItem("user") || false;
+const check = checkUser() || false;
 
 const initialState = {
 	isLoggined: check,
@@ -29,7 +30,7 @@ const loginSlice = createSlice({
 			console.log("Success -> Login");
 			return {
 				...state,
-				isLoggined: window.sessionStorage.getItem("user"),
+				isLoggined: checkUser(),
 			};
 		},
 		[postLogins.rejected]: (state) => {
