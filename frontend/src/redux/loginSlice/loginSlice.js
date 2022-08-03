@@ -1,10 +1,22 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { postlogin } from "../../services";
 import { checkUser } from "../../services";
+import { toast } from "react-toastify";
 
 export const postLogins = createAsyncThunk("login/postLogins", async (req) => {
-	const data = await postlogin(req);
-	return data;
+	try {
+		const data  = await postlogin(req);
+		window.sessionStorage.setItem("user", req.userId);
+		console.log(data);
+		toast.success("Login SuccessFull", { autoClose: 1000 });
+		return data;
+	} catch (error) {
+		if (error.response && error.response.status === 400) {
+			const msg = error.response.data.msg;
+			toast.error(msg, { autoClose: 1000 });
+		}
+		return "error";
+	}
 });
 
 // check user in sessionStorage

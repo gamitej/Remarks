@@ -5,11 +5,12 @@ axios.interceptors.response.use(null, (error) => {
 	const expectedError =
 		error.response &&
 		error.response.status >= 400 &&
-		error.response.statuc < 500;
+		error.response.status < 500;
 	if (!expectedError) {
 		console.log("Error Has Been Occured");
+		toast.error("Error Occurred - 500");
 	}
-	toast.error("Error Occurred - 500")
+
 	return Promise.reject(error);
 });
 
