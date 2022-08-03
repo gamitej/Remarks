@@ -17,7 +17,7 @@ const Login = ({ handleLogin, isAuth }) => {
 	//========================== Joi Schema ==================================
 
 	const schema = Joi.object({
-		userId: Joi.string().required().min(6).label("User Id"),
+		userId: Joi.string().required().min(6).label("Username"),
 		password: Joi.string().required().min(4).label("Password"),
 	});
 
@@ -75,14 +75,14 @@ const Login = ({ handleLogin, isAuth }) => {
 										className={inputClassName}
 										type="text"
 										name="userId"
-										placeholder="Email address"
+										placeholder="Username"
 										value={form.userId}
 										onChange={handleChange}
 										autoComplete="off"
 									/>
 									{error.message &&
 										error.show &&
-										error.label === "User Id" && (
+										error.label === "Username" && (
 											<Alert
 												onClose={handleAlertChange}
 												severity="error"
