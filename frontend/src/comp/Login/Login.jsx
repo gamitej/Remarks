@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Joi from "joi";
 import { Alert } from "@mui/material";
 import { checkUser } from "../../services";
-import { Navigate } from "react-router-dom";
 
 const Login = ({ handleLogin }) => {
 	const [form, setForm] = useState({ userId: "", password: "" });
@@ -47,7 +46,7 @@ const Login = ({ handleLogin }) => {
 	const inputClassName =
 		"form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none";
 
-	if (checkUser()) return <Navigate to="/" replace={true} />;
+	if (checkUser()) return window.location("/");
 	return (
 		<div className="w-full flex justify-center">
 			<section className="h-[80vh] w-[80%]">
