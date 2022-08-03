@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Joi from "joi";
-import { Alert } from "@mui/material";
+
 import { Navigate } from "react-router-dom";
+import { InputField } from "../";
 
 const Login = ({ handleLogin, isAuth }) => {
 	//========================== State Hooks ================================
@@ -71,47 +72,37 @@ const Login = ({ handleLogin, isAuth }) => {
 							<form onSubmit={handleSubmit}>
 								{/* Username */}
 								<div className="mb-6">
-									<input
-										className={inputClassName}
+									<InputField
+										inputClassName={inputClassName}
+										handleChange={handleChange}
+										placeholder="Username"
 										type="text"
 										name="userId"
-										placeholder="Username"
 										value={form.userId}
-										onChange={handleChange}
-										autoComplete="off"
+										message={error.message}
+										show={error.show}
+										label={error.label}
+										severity="error"
+										handleAlertChange={handleAlertChange}
+										labelCheck="Username"
 									/>
-									{error.message &&
-										error.show &&
-										error.label === "Username" && (
-											<Alert
-												onClose={handleAlertChange}
-												severity="error"
-											>
-												{error.message}
-											</Alert>
-										)}
 								</div>
 								{/* Password */}
 								<div className="mb-6">
-									<input
-										className={inputClassName}
+									<InputField
+										inputClassName={inputClassName}
+										handleChange={handleChange}
+										placeholder="Password"
 										type="password"
 										name="password"
-										placeholder="Password"
 										value={form.password}
-										onChange={handleChange}
-										autoComplete="off"
+										message={error.message}
+										show={error.show}
+										label={error.label}
+										severity="error"
+										handleAlertChange={handleAlertChange}
+										labelCheck="Password"
 									/>
-									{error.message &&
-										error.show &&
-										error.label === "Password" && (
-											<Alert
-												onClose={handleAlertChange}
-												severity="error"
-											>
-												{error.message}
-											</Alert>
-										)}
 								</div>
 
 								<div className="flex justify-between items-center mb-6">

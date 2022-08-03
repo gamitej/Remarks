@@ -1,6 +1,5 @@
 import React from "react";
 import { checkUser } from "../../services";
-import { toast } from "react-toastify";
 import { logout } from "../../redux/loginSlice/loginSlice.js";
 import { useDispatch } from "react-redux";
 
