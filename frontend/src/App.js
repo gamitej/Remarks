@@ -9,34 +9,36 @@ import {
 	postLogins,
 	getUserLogin,
 	getLoading,
-	// eslint-disable-next-line
 	loading,
 } from "./redux/loginSlice/loginSlice";
+import { LinearProgress } from "@mui/material";
 
 function App() {
 	//==================== Redux Call =========================
 
 	const dispatch = useDispatch();
 	const isAuth = useSelector(getUserLogin);
-	const loading = useSelector(getLoading);
+	const loginLoading = useSelector(getLoading);
 
 	//==================== Event Handlers =========================
 
 	const handleLogin = (req) => {
 		dispatch(postLogins(req));
 		dispatch(loading());
+		console.log(loginLoading);
 	};
 
 	// login props
 	const loginProps = {
 		isAuth,
-		loading,
+		loginLoading,
 		handleLogin,
 	};
 
 	return (
 		<div>
 			<ToastContainer />
+			{loginLoading && <LinearProgress />}
 			<Navbar />
 			{/* Routes */}
 			<Routes>

@@ -7,7 +7,7 @@ export const postLogins = createAsyncThunk("login/postLogins", async (req) => {
 	try {
 		const data = await postlogin(req);
 		window.sessionStorage.setItem("user", req.userId);
-		toast.success("Login SuccessFull", { autoClose: 1000 });
+		toast.success("Login Successfull", { autoClose: 1000 });
 		return data;
 	} catch (error) {
 		if (error.response && error.response.status === 400) {

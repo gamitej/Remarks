@@ -3,8 +3,9 @@ import Joi from "joi";
 
 import { Navigate } from "react-router-dom";
 import { InputField } from "../";
+import { CircularProgress } from "@mui/material";
 
-const Login = ({ handleLogin, isAuth }) => {
+const Login = ({ handleLogin, isAuth, loginLoading }) => {
 	//========================== State Hooks ================================
 
 	const [form, setForm] = useState({ userId: "", password: "" });
@@ -119,6 +120,13 @@ const Login = ({ handleLogin, isAuth }) => {
 										className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
 									>
 										Login
+										{loginLoading && (
+											<CircularProgress
+												sx={{ color: "white" }}
+												size={14}
+												className="ml-2"
+											/>
+										)}
 									</button>
 									<p className="text-sm font-semibold mt-2 pt-1 mb-0">
 										Don't have an account ?{" "}

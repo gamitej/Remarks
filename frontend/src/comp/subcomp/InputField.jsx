@@ -27,6 +27,7 @@ const InputField = ({
 				value={value}
 				onChange={handleChange}
 				autoComplete={autoComplete}
+				spellCheck={false}
 			/>
 			{message && show && label === labelCheck && (
 				<Alert onClose={handleAlertChange} severity={severity}>
