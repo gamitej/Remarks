@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 export const postLogins = createAsyncThunk("login/postLogins", async (req) => {
 	try {
-		const data  = await postlogin(req);
+		const data = await postlogin(req);
 		window.sessionStorage.setItem("user", req.userId);
 		toast.success("Login SuccessFull", { autoClose: 1000 });
 		return data;
@@ -23,6 +23,7 @@ const check = checkUser() || false;
 
 const initialState = {
 	isLoggedIn: check,
+	loading: false,
 };
 
 const loginSlice = createSlice({
@@ -31,6 +32,9 @@ const loginSlice = createSlice({
 	reducers: {
 		logout: (state) => {
 			state.isLoggedIn = false;
+		},
+		loading: (state) => {
+			state.loading = true;
 		},
 	},
 	extraReducers: {
@@ -43,6 +47,7 @@ const loginSlice = createSlice({
 			return {
 				...state,
 				isLoggedIn: checkUser(),
+				loading: false,
 			};
 		},
 		[postLogins.rejected]: (state) => {
@@ -51,8 +56,9 @@ const loginSlice = createSlice({
 	},
 });
 
-export const { logout } = loginSlice.actions;
+export const { logout, loading } = loginSlice.actions;
 
 export const getUserLogin = (state) => state.login.isLoggedIn;
+export const getLoading = (state) => state.login.loading;
 
 export default loginSlice.reducer;

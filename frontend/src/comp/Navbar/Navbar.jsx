@@ -2,15 +2,18 @@ import React from "react";
 import { checkUser } from "../../services";
 import { logout } from "../../redux/loginSlice/loginSlice.js";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	//========================== Event Handlers ================================
 
 	const handleLogout = () => {
 		window.sessionStorage.removeItem("user");
 		dispatch(logout());
+		navigate("/login");
 	};
 
 	return (
@@ -31,7 +34,7 @@ const Navbar = () => {
 						</button>
 					)}
 					{!checkUser() && (
-						<p className="text-white text-lg">User Login</p>
+						<p className="text-white text-lg">Login</p>
 					)}
 				</div>
 			</nav>
