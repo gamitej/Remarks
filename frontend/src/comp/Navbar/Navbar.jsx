@@ -13,6 +13,9 @@ const Navbar = () => {
 	const handleLogout = () => {
 		window.sessionStorage.removeItem("user");
 		dispatch(logout());
+		handleNavigate();
+	};
+	const handleNavigate = () => {
 		navigate("/login");
 	};
 
@@ -34,7 +37,12 @@ const Navbar = () => {
 						</button>
 					)}
 					{!checkUser() && (
-						<p className="text-white text-lg">Login</p>
+						<p
+							className="text-white text-lg font-medium hover:text-gray-500 cursor-pointer"
+							onClick={handleNavigate}
+						>
+							Login
+						</p>
 					)}
 				</div>
 			</nav>
