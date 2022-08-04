@@ -52,6 +52,10 @@ const loginSlice = createSlice({
 		},
 		[postLogins.rejected]: (state) => {
 			console.log("Rejected -> Login");
+			return {
+				...state,
+				loading: false,
+			};
 		},
 	},
 });
