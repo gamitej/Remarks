@@ -8,7 +8,7 @@ axios.interceptors.response.use(null, (error) => {
 		error.response.status < 500;
 	if (!expectedError) {
 		console.log("Error Has Been Occured");
-		toast.error("Error Occurred - 500");
+		toast.error("Error Occurred - 500", { autoClose: 1200 });
 	}
 
 	return Promise.reject(error);
