@@ -1,4 +1,4 @@
-import json
+from ast import JoinedStr
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from remark.rem import getRemarks, postRemark, delRemark, updateRemark
@@ -59,6 +59,11 @@ def putDeleteRemark(id):
     except Exception as e:
         print(e)
         return jsonify({"data": 'Error Occured'}), 500
+
+
+@app.errorhandler(404)
+def error(e):
+    return jsonify({"msg": "Wrong Route"}),404
 
 
 if __name__ == '__main__':

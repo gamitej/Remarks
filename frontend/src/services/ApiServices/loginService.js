@@ -6,6 +6,8 @@ const endpoint = config.apiEndpoint + "/login";
 export async function postlogin(req) {
 	// eslint-disable-next-line
 	const data  = await http.post(endpoint, req);
+	console.log(data)
+	return data;
 }
 
 export const checkUser = () => {

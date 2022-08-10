@@ -3,20 +3,23 @@ import { postlogin } from "../../services";
 import { checkUser } from "../../services";
 import { toast } from "react-toastify";
 
-export const postLogins = createAsyncThunk("login/postLogins", async (req) => {
-	try {
-		const data = await postlogin(req);
-		window.sessionStorage.setItem("user", req.userId);
-		toast.success("Login Successfull", { autoClose: 1000 });
-		return data;
-	} catch (error) {
-		if (error.response && error.response.status === 400) {
-			const msg = error.response.data.msg;
-			toast.error(msg, { autoClose: 1000 });
+export const postLogins = createAsyncThunk(
+	"login/postLogins",
+	async (req, { rejectWithValue }) => {
+		try {
+			const data = await postlogin(req);
+			const res = data.data.msg;
+			if (res) {
+				window.sessionStorage.setItem("user", req.userId);
+				toast.success("Login Successfull", { autoClose: 1000 });
+				return data;
+			}
+			toast.error("Unable to login", { autoClose: 1000 });
+		} catch (error) {
+			throw rejectWithValue(error);
 		}
-		return "error";
 	}
-});
+);
 
 // check user in sessionStorage
 const check = checkUser() || false;
@@ -50,8 +53,10 @@ const loginSlice = createSlice({
 				loading: false,
 			};
 		},
-		[postLogins.rejected]: (state) => {
+		[postLogins.rejected]: (state, { payload }) => {
 			console.log("Rejected -> Login");
+			const msg = (payload.response.data.msg);
+			toast.error(msg, { autoClose: 1000 });
 			return {
 				...state,
 				loading: false,
