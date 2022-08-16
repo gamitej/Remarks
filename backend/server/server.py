@@ -1,4 +1,3 @@
-from ast import JoinedStr
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from remark.rem import getRemarks, postRemark, delRemark, updateRemark
