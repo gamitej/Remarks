@@ -25,9 +25,7 @@ $ python3 server/server.py
 
 ## To run both backend & frontend
 
-1. Modify the run.sh script
-
-In place of username write your system username
+1. Modify the run.sh script in place of username write your system username
 
 ```
 gnome-terminal --working-directory=/home/username/Remarks/backend/ -- bash run_backend.sh
