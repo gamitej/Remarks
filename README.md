@@ -22,3 +22,11 @@ $ npm start
 $ cd backend
 $ python3 server/server.py
 ```
+
+## To run both backend & frontend
+
+Run the shell script
+
+```
+bash run.sh
+```
