@@ -25,7 +25,22 @@ $ python3 server/server.py
 
 ## To run both backend & frontend
 
-Run the shell script
+1. Modify the run.sh script
+
+In place of username write your system username
+
+```
+gnome-terminal --working-directory=/home/username/Remarks/backend/ -- bash run_backend.sh
+gnome-terminal --working-directory=/home/username/Remarks/frontend/ -- bash run_frontend.sh
+```
+
+2. Use below command to get your username
+
+```
+whoami
+```
+
+3. After the modification save the file and run the shell script.
 
 ```
 bash run.sh
